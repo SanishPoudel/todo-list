@@ -25,14 +25,22 @@ class Task{
 function addProject(projectName, taskName) {
     // this should check if the projectName already exists if it does then just add to its list otherwise create a new one.
     // if projectName is in projects then add taskName to it
-    // else create projectName and add taskName to it    
+    // else create projectName and add taskName to it 
+    if (projectName in projects) {
+        projects[projectName].push(taskName);
+    } else {
+        projects[projectName] = [taskName];
+    }
+
      
 }
 
 let value = new Task("name", true, "tomorrow");
-newValue = new Task("newName", false, "today");
+let newValue = new Task("newName", false, "today");
 addProject("key", value);
 addProject("key", newValue);
+let anothoerValue = new Task("anotherName", true, "yesterday");
+addProject("anotherKey", anothoerValue);
 
 
-// console.log(projects[0]["key"]);
+console.log(projects);
