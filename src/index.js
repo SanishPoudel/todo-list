@@ -1,11 +1,7 @@
 // import "./style.css"
 
-
-// how to start
-// first i'll need an empty list to hold the projects
-// when a new project is added it'll be appended to this list
-
-// the projects themselves will be a dictionary 
+// the projects will be a dictionary 
+// the key of the project will be displayed on the sidebar and the list of values on the main menu.
 // the key will be the name of the project and the value will be the list of tasks
 // the tasks will be a custom data type that will have various features
 
@@ -15,8 +11,9 @@
 // another function to link this with the dom
 
 
-const projects = []; // this will be the projects list
+const projects = {}; // this will be the projects dictionary 
 
+// this will be class from which task object will be constructed.
 class Task{
     constructor(name, status, dueDate) {
         this.name = name;
@@ -27,19 +24,8 @@ class Task{
 
 function addProject(projectName, taskName) {
     // this should check if the projectName already exists if it does then just add to its list otherwise create a new one.
-    let dict = {};
-    console.log("before ", projects)
-    if (projects.includes(dict[projectName])) {
-        dict[projectName].push(taskName);
-        projects.push(dict);
-        console.log("duplicate case " + projects)
-    }
-    else {
-        dict[projectName] = [taskName];
-        projects.push(dict);
-        console.log("original ", projects)
-    }
-    
+    // if projectName is in projects then add taskName to it
+    // else create projectName and add taskName to it    
      
 }
 
