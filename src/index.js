@@ -1,7 +1,5 @@
 // import "./style.css"
 
-// another function to link this with the dom
-
 const projects = {};
 
 class Task{
@@ -29,3 +27,13 @@ addProject("anotherKey", anothoerValue);
 
 
 console.log(projects);
+
+// the new function will have to do the following
+
+
+// add the value of the dictionary in the main menu
+// add the key of the dictionary in the sidebar
+// so there will be two different buttons add task and add project. fix this in html as well #2
+// add task will pop up a dialog and then it'll be same as library #4
+// add project will pop up another dialog that will create a new item with the given name as key and an empty list as value #3
+// there should be a default project to add tasks to at the beginning. should start with this. #1
