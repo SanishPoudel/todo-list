@@ -1,6 +1,12 @@
 // import "./style.css"
 
+const projectButton = document.querySelector(".project");
+const taskButton = document.querySelector(".task");
+const container = document.querySelector(".container");
+const inputProject = document.querySelector(".inputProject");
+
 const projects = {};
+projects["default"] = []; // the default one where tasks are stored
 
 class Task{
     constructor(name, status, dueDate) {
@@ -25,15 +31,27 @@ addProject("key", newValue);
 let anothoerValue = new Task("anotherName", true, "yesterday");
 addProject("anotherKey", anothoerValue);
 
-
-console.log(projects);
-
 // the new function will have to do the following
 
 
 // add the value of the dictionary in the main menu
 // add the key of the dictionary in the sidebar
-// so there will be two different buttons add task and add project. fix this in html as well #2
 // add task will pop up a dialog and then it'll be same as library #4
 // add project will pop up another dialog that will create a new item with the given name as key and an empty list as value #3
-// there should be a default project to add tasks to at the beginning. should start with this. #1
+
+
+for (let sidebarKeys of (Object.keys(projects))) {
+    btn = document.createElement("button");
+    btn.textContent = sidebarKeys;
+    btn.className = "nav options";
+    btn.style.fontSize = "large"; 
+    btn.style.paddingLeft = "10px";
+    container.appendChild(btn);
+    btn.addEventListener("click", ()=> {
+        console.log("hello");
+    });
+}
+
+projectButton.addEventListener("click", ()=> {
+    inputProject.style.display = "unset";
+})
