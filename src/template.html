@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todo List</title>
-    <link rel="stylesheet" href="./style.css">
 </head>
 <body>
     <div id="content">
@@ -23,7 +22,14 @@
         <button class="project nav options"><img class="icon" src="./images/plus.svg" alt="plus icon"> Add Project</button>
         <div class="inputProject">
             <form>
-                <input type="text">
+                <fieldset>
+                    <input type="text">
+                </fieldset>
+                
+                <fieldset>
+                    <button class="add">Add</button>
+                    <button class="cancel">Cancel</button>
+                </fieldset>
             </form>
         </div>
     </div>
@@ -40,6 +46,5 @@
 
     </div>
 
-    <script src="./index.js"></script>
 </body>
 </html>
