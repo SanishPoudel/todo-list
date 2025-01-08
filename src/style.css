@@ -104,3 +104,45 @@ body {
 .inputProject {
     display: none;
 }
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+input {
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 10px;
+    width: 100%;
+}
+
+fieldset {
+    all: unset;
+    display: flex;
+    justify-content: space-around;
+    gap: 10px;
+}
+
+.add, .cancel {
+    font-size: large;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 8px;
+    width: 100%;
+}
+
+.add {
+    border: 1px solid #99dd99;
+    background-color: #aaffaa;
+}
+
+.cancel {
+    border: 1px solid #eeadad;
+    background-color: #f5b2b2;
+}
+
+.add:hover, .cancel:hover {
+    cursor: pointer;
+}
