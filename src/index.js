@@ -1,9 +1,12 @@
-// import "./style.css"
+import "./style.css"
 
 const projectButton = document.querySelector(".project");
 const taskButton = document.querySelector(".task");
 const container = document.querySelector(".container");
 const inputProject = document.querySelector(".inputProject");
+const addProjectButton = document.querySelector(".add");
+const projectTitle = document.querySelector(".projectTitle");
+const form = document.querySelector("form");
 
 const projects = {};
 projects["default"] = []; // the default one where tasks are stored
@@ -39,19 +42,33 @@ addProject("anotherKey", anothoerValue);
 // add task will pop up a dialog and then it'll be same as library #4
 // add project will pop up another dialog that will create a new item with the given name as key and an empty list as value #3
 
+function addProjectToSideBar() {
 
-for (let sidebarKeys of (Object.keys(projects))) {
-    btn = document.createElement("button");
-    btn.textContent = sidebarKeys;
-    btn.className = "nav options";
-    btn.style.fontSize = "large"; 
-    btn.style.paddingLeft = "10px";
-    container.appendChild(btn);
-    btn.addEventListener("click", ()=> {
-        console.log("hello");
-    });
+    while (container.firstChild) {
+        container.removeChild(container.lastChild);
+    }
+
+    for (let sidebarKeys of (Object.keys(projects))) {
+        const btn = document.createElement("button");
+        btn.textContent = sidebarKeys;
+        btn.className = "nav options";
+        btn.style.fontSize = "large"; 
+        btn.style.paddingLeft = "10px";
+        container.appendChild(btn);
+        btn.addEventListener("click", ()=> {
+            console.log("hello");
+        });
+    }
 }
 
 projectButton.addEventListener("click", ()=> {
     inputProject.style.display = "unset";
+})
+
+addProjectButton.addEventListener("click", (event)=> {
+    projects[projectTitle.value] = [];
+    console.log(projects);
+    inputProject.style.display = "none";
+    addProjectToSideBar();
+    event.preventDefault();
 })
