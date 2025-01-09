@@ -1,5 +1,6 @@
 import "./style.css"
 
+// dom variables
 const projectButton = document.querySelector(".project");
 const taskButton = document.querySelector(".task");
 const container = document.querySelector(".container");
@@ -9,10 +10,12 @@ const cancelProjectButton = document.querySelector(".cancel");
 const projectTitle = document.querySelector(".projectTitle");
 const form = document.querySelector("form");
 
+// defining the project
 const projects = {};
 projects["default"] = []; // the default one where tasks are stored
 
 class Task{
+    //defining the task object
     constructor(name, status, dueDate) {
         this.name = name;
         this.status = status;
@@ -21,6 +24,7 @@ class Task{
 }
 
 function addProject(projectName, taskName) {
+    // adding project into the project dictionary
     if (projectName in projects) {
         projects[projectName].push(taskName);
     } else {
@@ -28,6 +32,7 @@ function addProject(projectName, taskName) {
     } 
 }
 
+// demo value
 let value = new Task("name", true, "tomorrow");
 let newValue = new Task("newName", false, "today");
 addProject("key", value);
@@ -35,16 +40,8 @@ addProject("key", newValue);
 let anothoerValue = new Task("anotherName", true, "yesterday");
 addProject("anotherKey", anothoerValue);
 
-// the new function will have to do the following
-
-
-// add the value of the dictionary in the main menu
-// add the key of the dictionary in the sidebar
-// add task will pop up a dialog and then it'll be same as library #4
-// add project will pop up another dialog that will create a new item with the given name as key and an empty list as value #3
-
 function addProjectToSideBar() {
-
+    // this will take user input and append it into the sidebar to create new projects
     while (container.firstChild) {
         container.removeChild(container.lastChild);
     }
@@ -63,11 +60,13 @@ function addProjectToSideBar() {
 }
 
 projectButton.addEventListener("click", ()=> {
+    // this is for the add project button in the sidebar
     inputProjectSection.style.display = "unset";
     projectTitle.focus();
 })
 
 addProjectButton.addEventListener("click", (event)=> {
+    // this is for the add button in the hidded div
     projects[projectTitle.value] = [];
     console.log(projects);
     inputProjectSection.style.display = "none";
@@ -77,5 +76,11 @@ addProjectButton.addEventListener("click", (event)=> {
 })
 
 cancelProjectButton.addEventListener("click", ()=> {
+    // this is for the cancel button in the hidded div
     inputProjectSection.style.display = "none";
 })
+
+// just these things are left
+
+// add the value of the dictionary in the main menu 
+// add task will pop up a dialog and then it'll be same as library 
