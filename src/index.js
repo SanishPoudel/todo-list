@@ -1,5 +1,8 @@
 import "./style.css"
 
+import list from "./images/list.svg";
+import close from "./images/delete.svg";
+
 // dom variables
 const projectButton = document.querySelector(".project");
 const taskButton = document.querySelector(".task");
@@ -47,12 +50,34 @@ function addProjectToSideBar() {
     }
 
     for (let sidebarKeys of (Object.keys(projects))) {
+        // parent div
+
+        // for the button
         const btn = document.createElement("button");
         btn.textContent = sidebarKeys;
         btn.className = "nav options";
         btn.style.fontSize = "large"; 
         btn.style.paddingLeft = "10px";
+
+        // for the image
+        const img1 = document.createElement("img");
+        img1.className = "icon";
+        img1.src = list;
+        img1.alt = "list icon"
+
+        const img2 = document.createElement("img");
+        img2.className = "icon";
+        img2.src = close;
+        img2.alt = "close icon";
+
+        btn.prepend(img1);
+        btn.appendChild(img2);
         container.appendChild(btn);
+        
+        // this section is incomplete
+        // need to finish this later
+        // this is a reminder to finish this
+
         btn.addEventListener("click", ()=> {
             console.log("hello");
         });
