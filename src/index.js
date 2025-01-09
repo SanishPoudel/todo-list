@@ -64,6 +64,7 @@ function addProjectToSideBar() {
 
 projectButton.addEventListener("click", ()=> {
     inputProjectSection.style.display = "unset";
+    projectTitle.focus();
 })
 
 addProjectButton.addEventListener("click", (event)=> {
