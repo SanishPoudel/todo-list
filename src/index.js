@@ -3,8 +3,9 @@ import "./style.css"
 const projectButton = document.querySelector(".project");
 const taskButton = document.querySelector(".task");
 const container = document.querySelector(".container");
-const inputProject = document.querySelector(".inputProject");
+const inputProjectSection = document.querySelector(".inputProject");
 const addProjectButton = document.querySelector(".add");
+const cancelProjectButton = document.querySelector(".cancel");
 const projectTitle = document.querySelector(".projectTitle");
 const form = document.querySelector("form");
 
@@ -62,13 +63,18 @@ function addProjectToSideBar() {
 }
 
 projectButton.addEventListener("click", ()=> {
-    inputProject.style.display = "unset";
+    inputProjectSection.style.display = "unset";
 })
 
 addProjectButton.addEventListener("click", (event)=> {
     projects[projectTitle.value] = [];
     console.log(projects);
-    inputProject.style.display = "none";
+    inputProjectSection.style.display = "none";
     addProjectToSideBar();
+    form.reset();
     event.preventDefault();
+})
+
+cancelProjectButton.addEventListener("click", ()=> {
+    inputProjectSection.style.display = "none";
 })
