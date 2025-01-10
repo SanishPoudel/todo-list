@@ -150,3 +150,7 @@ fieldset {
 .keyIcon {
     height: 30px;
 }
+
+.todoSection {
+    display: none;
+}
