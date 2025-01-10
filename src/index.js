@@ -12,6 +12,7 @@ const addProjectButton = document.querySelector(".add");
 const cancelProjectButton = document.querySelector(".cancel");
 const projectTitle = document.querySelector(".projectTitle");
 const form = document.querySelector("form");
+const todoSection = document.querySelector(".todoSection");
 
 // defining the project
 const projects = {};
@@ -83,15 +84,19 @@ function addProjectToSideBar() {
         // need to finish this later
         // this is a reminder to finish this
 
+        btn.addEventListener("click", ()=> {
+            let value = projects[btn.textContent];
+            let div = document.createElement("div");
+            div.textContent = value;
+            todoSection.appendChild(div);
+            todoSection.style.display = "unset";
+        });
+
         img2.addEventListener("click", ()=> {
             // to remove the project from projects
                 container.removeChild(btn);
                 delete projects[btn.textContent];
         })
-
-        btn.addEventListener("click", ()=> {
-            console.log("hello");
-        });
     }
 }
 
@@ -104,7 +109,6 @@ projectButton.addEventListener("click", ()=> {
 addProjectButton.addEventListener("click", (event)=> {
     // this is for the add button in the hidded div
     projects[projectTitle.value] = [];
-    console.log(projects);
     inputProjectSection.style.display = "none";
     addProjectToSideBar();
     form.reset();
