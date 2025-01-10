@@ -61,22 +61,33 @@ function addProjectToSideBar() {
 
         // for the image
         const img1 = document.createElement("img");
-        img1.className = "icon";
+        img1.className = "keyIcon";
         img1.src = list;
         img1.alt = "list icon"
 
+        // for the delete icon
         const img2 = document.createElement("img");
-        img2.className = "icon";
+        img2.className = "keyIcon";
         img2.src = close;
         img2.alt = "close icon";
 
         btn.prepend(img1);
         btn.appendChild(img2);
+
+        btn.style.display = "grid";
+        btn.style["grid-template-columns"] = "1fr 6fr 2fr";
+
         container.appendChild(btn);
         
         // this section is incomplete
         // need to finish this later
         // this is a reminder to finish this
+
+        img2.addEventListener("click", ()=> {
+            // to remove the project from projects
+                container.removeChild(btn);
+                delete projects[btn.textContent];
+        })
 
         btn.addEventListener("click", ()=> {
             console.log("hello");
