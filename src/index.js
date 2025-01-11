@@ -36,6 +36,13 @@ function addProject(projectName, taskName) {
     } 
 }
 
+function clearDiv(div) {
+    // function to clear all contents in a div
+    while (div.firstChild) {
+        div.removeChild(div.lastChild);
+    }
+}
+
 // demo value
 let value = new Task("name", true, "tomorrow");
 let newValue = new Task("newName", false, "today");
@@ -46,9 +53,7 @@ addProject("anotherKey", anothoerValue);
 
 function addProjectToSideBar() {
     // this will take user input and append it into the sidebar to create new projects
-    while (container.firstChild) {
-        container.removeChild(container.lastChild);
-    }
+    clearDiv(container);
 
     for (let sidebarKeys of (Object.keys(projects))) {
         // parent div
@@ -84,12 +89,21 @@ function addProjectToSideBar() {
         // need to finish this later
         // this is a reminder to finish this
 
+        // need to fix this 
+        // this should clear the div before appending to it
+        // it should loop through the list of values and append everyone to it
+        // it shouldn't clash with the img event listener
         btn.addEventListener("click", ()=> {
             let value = projects[btn.textContent];
-            let div = document.createElement("div");
-            div.textContent = value;
-            todoSection.appendChild(div);
-            todoSection.style.display = "unset";
+            console.log(value);
+
+    
+                let div = document.createElement("div");
+
+                div.textContent = value[0].name;
+
+                todoSection.appendChild(div);
+                todoSection.style.display = "unset";
         });
 
         img2.addEventListener("click", ()=> {
