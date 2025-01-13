@@ -51,6 +51,8 @@ addProject("key", value);
 addProject("key", newValue);
 let anothoerValue = new Task("anotherName", true, "yesterday");
 addProject("anotherKey", anothoerValue);
+let anothernewValue = new Task("anotherNewName", false, "tomorrow");
+addProject("anotherKey", anothernewValue);
 
 function addProjectToSideBar() {
     // this will take user input and append it into the sidebar to create new projects
@@ -103,11 +105,22 @@ function addProjectToSideBar() {
                 if (value) {
                     clearDiv(todoSection);
                     mainTitle.textContent = btn.textContent;
-                    let div = document.createElement("div");
-                    
-                    div.textContent = value[0].name;
 
-                    todoSection.appendChild(div);
+
+
+
+
+                    for (let i = 0; i < value.length; i++) 
+                    {
+                        // need to format this properly so it looks nice.
+                        let div = document.createElement("div");
+                        
+
+                        div.textContent = value[i].name;
+
+                        todoSection.appendChild(div);
+                    }
+
                     todoSection.style.display = "unset";
                 }
             }
