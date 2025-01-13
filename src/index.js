@@ -13,6 +13,7 @@ const cancelProjectButton = document.querySelector(".cancel");
 const projectTitle = document.querySelector(".projectTitle");
 const form = document.querySelector("form");
 const todoSection = document.querySelector(".todoSection");
+const mainTitle = document.querySelector(".menu .title");
 
 // defining the project
 const projects = {};
@@ -94,22 +95,34 @@ function addProjectToSideBar() {
         // it should loop through the list of values and append everyone to it
         // it shouldn't clash with the img event listener
         btn.addEventListener("click", ()=> {
+
+            
             let value = projects[btn.textContent];
-            console.log(value);
 
-    
-                let div = document.createElement("div");
+            try {
+                if (value) {
+                    clearDiv(todoSection);
+                    mainTitle.textContent = btn.textContent;
+                    let div = document.createElement("div");
+                    
+                    div.textContent = value[0].name;
 
-                div.textContent = value[0].name;
-
-                todoSection.appendChild(div);
-                todoSection.style.display = "unset";
+                    todoSection.appendChild(div);
+                    todoSection.style.display = "unset";
+                }
+            }
+            catch (error) {}
         });
 
         img2.addEventListener("click", ()=> {
             // to remove the project from projects
                 container.removeChild(btn);
                 delete projects[btn.textContent];
+
+                if (img2.parentNode.textContent === mainTitle.textContent) { 
+                mainTitle.textContent = "Inbox";
+                clearDiv(todoSection);
+                }
         })
     }
 }
