@@ -87,44 +87,29 @@ function addProjectToSideBar() {
         btn.style["grid-template-columns"] = "1fr 6fr 2fr";
 
         container.appendChild(btn);
-        
-        // this section is incomplete
-        // need to finish this later
-        // this is a reminder to finish this
 
-        // need to fix this 
-        // this should clear the div before appending to it
-        // it should loop through the list of values and append everyone to it
-        // it shouldn't clash with the img event listener
         btn.addEventListener("click", ()=> {
 
-            
             let value = projects[btn.textContent];
 
-            try {
-                if (value) {
-                    clearDiv(todoSection);
-                    mainTitle.textContent = btn.textContent;
+            if (value) {
+                clearDiv(todoSection);
+                mainTitle.textContent = btn.textContent;
 
+                for (let i = 0; i < value.length; i++) 
+                {
+                    // need to format this properly so it looks nice.
+                    
+                    let div = document.createElement("div");
+                    
 
+                    div.textContent = value[i].name;
 
-
-
-                    for (let i = 0; i < value.length; i++) 
-                    {
-                        // need to format this properly so it looks nice.
-                        let div = document.createElement("div");
-                        
-
-                        div.textContent = value[i].name;
-
-                        todoSection.appendChild(div);
-                    }
-
-                    todoSection.style.display = "unset";
+                    todoSection.appendChild(div);
                 }
+
+                todoSection.style.display = "unset";
             }
-            catch (error) {}
         });
 
         img2.addEventListener("click", ()=> {
