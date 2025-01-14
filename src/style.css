@@ -125,20 +125,21 @@ fieldset {
     gap: 10px;
 }
 
-.add, .cancel {
+.add, .cancel, .enterEntry, .cancelEntry {
     font-size: large;
     font-weight: bold;
     padding: 10px;
     border-radius: 8px;
     width: 100%;
+    cursor: pointer;
 }
 
-.add {
+.add, .enterEntry {
     border: 1px solid #99dd99;
     background-color: #aaffaa;
 }
 
-.cancel {
+.cancel, .cancelEntry {
     border: 1px solid #eeadad;
     background-color: #f5b2b2;
 }
