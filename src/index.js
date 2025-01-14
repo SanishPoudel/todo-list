@@ -103,6 +103,7 @@ function addProjectToSideBar() {
                 for (let i = 0; i < value.length; i++) 
                 {
                     // need to format this properly so it looks nice.
+                    // this needs to be completed
                     
                     let div = document.createElement("div");
                     
@@ -156,13 +157,12 @@ taskButton.addEventListener("click", ()=> {
 
 enterEntry.addEventListener("click", ()=> {
     // this needs to be completed
+    // this should add the new task to the projects dict with the matching title 
+    // and also append it to the dom
 })
 
 cancelEntry.addEventListener("click", ()=> {
     inputTaskSection.style.display = "none";
 })
 
-// just these things are left
-
-// add the value of the dictionary in the main menu 
-// add task will pop up a dialog and then it'll be same as library 
+// need a function to add task entries to the dom in the proper format 
