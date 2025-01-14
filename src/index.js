@@ -14,6 +14,8 @@ const projectTitle = document.querySelector(".projectTitle");
 const form = document.querySelector("form");
 const todoSection = document.querySelector(".todoSection");
 const mainTitle = document.querySelector(".menu .title");
+const inputTaskSection = document.querySelector(".inputTask");
+const todoEntry = document.querySelector(".todoEntry");
 
 // defining the project
 const projects = {};
@@ -143,6 +145,11 @@ addProjectButton.addEventListener("click", (event)=> {
 cancelProjectButton.addEventListener("click", ()=> {
     // this is for the cancel button in the hidded div
     inputProjectSection.style.display = "none";
+})
+
+taskButton.addEventListener("click", ()=> {
+    inputTaskSection.style.display = "unset";
+    todoEntry.focus();
 })
 
 // just these things are left
