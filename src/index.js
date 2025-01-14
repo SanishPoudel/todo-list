@@ -16,6 +16,8 @@ const todoSection = document.querySelector(".todoSection");
 const mainTitle = document.querySelector(".menu .title");
 const inputTaskSection = document.querySelector(".inputTask");
 const todoEntry = document.querySelector(".todoEntry");
+const enterEntry = document.querySelector(".enterEntry");
+const cancelEntry = document.querySelector(".cancelEntry");
 
 // defining the project
 const projects = {};
@@ -150,6 +152,14 @@ cancelProjectButton.addEventListener("click", ()=> {
 taskButton.addEventListener("click", ()=> {
     inputTaskSection.style.display = "unset";
     todoEntry.focus();
+})
+
+enterEntry.addEventListener("click", ()=> {
+    // this needs to be completed
+})
+
+cancelEntry.addEventListener("click", ()=> {
+    inputTaskSection.style.display = "none";
 })
 
 // just these things are left
