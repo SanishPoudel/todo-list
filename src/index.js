@@ -99,16 +99,9 @@ function addProjectToSideBar() {
                 clearDiv(todoSection);
                 mainTitle.textContent = btn.textContent;
 
-                for (let i = 0; i < value.length; i++) 
-                {
-                    // need to format this properly so it looks nice.
-                    // this needs to be completed
-                    // put this in a separate function and call it here
-                    
+                for (let i = 0; i < value.length; i++) {
                     addTaskToDOM(value[i]);
-                }
-
-                todoSection.style.display = "unset";
+                }               
             }
         });
 
@@ -167,12 +160,16 @@ cancelEntry.addEventListener("click", ()=> {
     inputTaskSection.style.display = "none";
 })
 
-// need a function to add task entries to the dom in the proper format 
+
 function addTaskToDOM(task) {
+    // need to make sure that all the elements are formatted properly
+    // needs to add all details not just names
+
     let div = document.createElement("div");
     
 
     div.textContent = task.name;
 
     todoSection.appendChild(div);
+    todoSection.style.display = "unset";
 }
