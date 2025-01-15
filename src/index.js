@@ -21,7 +21,6 @@ const cancelEntry = document.querySelector(".cancelEntry");
 
 // defining the project
 const projects = {};
-projects["default"] = []; // the default one where tasks are stored
 
 class Task{
     //defining the task object
@@ -104,13 +103,9 @@ function addProjectToSideBar() {
                 {
                     // need to format this properly so it looks nice.
                     // this needs to be completed
+                    // put this in a separate function and call it here
                     
-                    let div = document.createElement("div");
-                    
-
-                    div.textContent = value[i].name;
-
-                    todoSection.appendChild(div);
+                    addTaskToDOM(value[i]);
                 }
 
                 todoSection.style.display = "unset";
@@ -155,10 +150,17 @@ taskButton.addEventListener("click", ()=> {
     todoEntry.focus();
 })
 
-enterEntry.addEventListener("click", ()=> {
+enterEntry.addEventListener("click", (event)=> {
     // this needs to be completed
     // this should add the new task to the projects dict with the matching title 
     // and also append it to the dom
+    let i = mainTitle.textContent
+    console.log(projects[i]);
+    projects[i].push(todoEntry.value); 
+    console.log(projects[i]);   
+    console.log(projects);
+    inputTaskSection.style.display = "none";
+    event.preventDefault();
 })
 
 cancelEntry.addEventListener("click", ()=> {
@@ -166,3 +168,11 @@ cancelEntry.addEventListener("click", ()=> {
 })
 
 // need a function to add task entries to the dom in the proper format 
+function addTaskToDOM(task) {
+    let div = document.createElement("div");
+    
+
+    div.textContent = task.name;
+
+    todoSection.appendChild(div);
+}
