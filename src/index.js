@@ -18,6 +18,7 @@ const inputTaskSection = document.querySelector(".inputTask");
 const todoEntry = document.querySelector(".todoEntry");
 const enterEntry = document.querySelector(".enterEntry");
 const cancelEntry = document.querySelector(".cancelEntry");
+const todoEntryForm = document.querySelector(".inputTask>form");
 
 // defining the project
 const projects = {};
@@ -149,9 +150,15 @@ enterEntry.addEventListener("click", (event)=> {
     // and also append it to the dom
     let i = mainTitle.textContent
     console.log(projects[i]);
-    projects[i].push(todoEntry.value); 
+    let name = todoEntry.value;
+    let status = false;
+    let dueDate = "tomorrow";
+    let task = new Task(name,status,dueDate);
+    projects[i].push(task); 
     console.log(projects[i]);   
     console.log(projects);
+    addTaskToDOM(task);
+    todoEntryForm.reset();
     inputTaskSection.style.display = "none";
     event.preventDefault();
 })
