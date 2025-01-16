@@ -48,16 +48,6 @@ function clearDiv(div) {
     }
 }
 
-// demo value
-let value = new Task("name", true, "tomorrow");
-let newValue = new Task("newName", false, "today");
-addProject("key", value);
-addProject("key", newValue);
-let anothoerValue = new Task("anotherName", true, "yesterday");
-addProject("anotherKey", anothoerValue);
-let anothernewValue = new Task("anotherNewName", false, "tomorrow");
-addProject("anotherKey", anothernewValue);
-
 function addProjectToSideBar() {
     // this will take user input and append it into the sidebar to create new projects
     clearDiv(container);
@@ -93,7 +83,7 @@ function addProjectToSideBar() {
         container.appendChild(btn);
 
         btn.addEventListener("click", ()=> {
-
+        // project titles. when clicked should display tasks in the main menu.
             let value = projects[btn.textContent];
 
             if (value) {
@@ -126,7 +116,7 @@ projectButton.addEventListener("click", ()=> {
 })
 
 addProjectButton.addEventListener("click", (event)=> {
-    // this is for the add button in the hidded div
+    // this is for the add button in the hidded div in the sidebar
     projects[projectTitle.value] = [];
     inputProjectSection.style.display = "none";
     addProjectToSideBar();
@@ -135,28 +125,26 @@ addProjectButton.addEventListener("click", (event)=> {
 })
 
 cancelProjectButton.addEventListener("click", ()=> {
-    // this is for the cancel button in the hidded div
+    // this is for the cancel button in the hidded div in the sidebar
     inputProjectSection.style.display = "none";
 })
 
 taskButton.addEventListener("click", ()=> {
+    // this is for the add task button in the main menu
     inputTaskSection.style.display = "unset";
     todoEntry.focus();
 })
 
 enterEntry.addEventListener("click", (event)=> {
-    // this needs to be completed
-    // this should add the new task to the projects dict with the matching title 
-    // and also append it to the dom
+    // this is for the add button in the hidded div in the main menu
     let i = mainTitle.textContent
-    console.log(projects[i]);
+
     let name = todoEntry.value;
     let status = false;
     let dueDate = "tomorrow";
     let task = new Task(name,status,dueDate);
+
     projects[i].push(task); 
-    console.log(projects[i]);   
-    console.log(projects);
     addTaskToDOM(task);
     todoEntryForm.reset();
     inputTaskSection.style.display = "none";
@@ -164,6 +152,7 @@ enterEntry.addEventListener("click", (event)=> {
 })
 
 cancelEntry.addEventListener("click", ()=> {
+    // this is for the cancel button in the hidden div in the main menu
     inputTaskSection.style.display = "none";
 })
 
