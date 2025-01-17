@@ -65,6 +65,7 @@ body {
     grid-column: 2/3;
     display: grid;
     grid-template-columns: 2fr 4fr 2fr;
+    overflow-y: auto;
 }
 
 .menu {
@@ -159,6 +160,7 @@ fieldset {
 .todoList {
     display: grid;
     grid-template-columns: 0.5fr 6fr 0.5fr;
+    gap: 5px;
     text-align: left;
     font-size: large;
     border: 1px solid black;
