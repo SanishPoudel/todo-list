@@ -180,7 +180,9 @@ function addTaskToDOM(task) {
     divContainer.className = "todoList";
 
     todoSection.appendChild(divContainer);
-    todoSection.style.display = "unset";
+    todoSection.style.display = "flex";
+    todoSection.style.flexDirection = "column";
+    todoSection.style.gap = "20px";
 
 
     removeImg.addEventListener("click", ()=> {
