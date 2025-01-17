@@ -185,5 +185,7 @@ function addTaskToDOM(task) {
 
     removeImg.addEventListener("click", ()=> {
         todoSection.removeChild(divContainer);
+        let index = projects[mainTitle.textContent].findIndex((x) => x === task.name);
+        projects[mainTitle.textContent].splice(index, 1);
     })
 }
