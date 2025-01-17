@@ -160,12 +160,30 @@ cancelEntry.addEventListener("click", ()=> {
 function addTaskToDOM(task) {
     // need to make sure that all the elements are formatted properly
     // needs to add all details not just names
+    let divContainer = document.createElement("div");
 
-    let div = document.createElement("div");
-    
+    let checkbox = document.createElement("input");
+    checkbox.setAttribute("type", "checkbox");
 
-    div.textContent = task.name;
+    let textDiv = document.createElement("div");
+    textDiv.textContent = task.name;
 
-    todoSection.appendChild(div);
+    let removeImg = document.createElement("img");
+    removeImg.className = "keyIcon";
+    removeImg.src = close;
+    removeImg.alt = "remove todo icon";
+
+    divContainer.appendChild(checkbox);
+    divContainer.appendChild(textDiv);
+    divContainer.appendChild(removeImg);
+
+    divContainer.className = "todoList";
+
+    todoSection.appendChild(divContainer);
     todoSection.style.display = "unset";
+
+
+    removeImg.addEventListener("click", ()=> {
+        todoSection.removeChild(divContainer);
+    })
 }
