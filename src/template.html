@@ -45,10 +45,32 @@
                         <input class="todoEntry" type="text">
                     </fieldset>
                     
+                    <fieldset class="radioButtons">
+                        <legend>Select Priority</legend>
+
+                        <div>
+                            <label for="low">Low</label>
+                            <input type="radio" id="low" name="priority" value="low" checked>
+                        </div>
+
+                        <div>
+                            <label for="medium">Medium</label>
+                            <input type="radio" id="medium" name="priority" value="medium">
+                        </div>
+
+                        <div>
+                            <label for="High">High</label>
+                            <input type="radio" id="high" name="priority" value="high">
+                        </div>
+
+                    </fieldset>
+
+
                     <fieldset>
                         <button type="submit" class="enterEntry">Add</button>
                         <button type="button" class="cancelEntry">Cancel</button>
                     </fieldset>
+
                 </form>
             </div>
         </div>
