@@ -178,3 +178,21 @@ fieldset {
 .todoList img {
     cursor: pointer;
 }
+
+.radioButtons {
+    border: solid 1px black;
+    padding: 10px 0px;
+}
+
+.radioButtons legend {
+    text-align: center;
+    font-weight: bold;
+    font-size: larger;
+    padding: 10px 0px;
+}
+
+.radioButtons div {
+    display: flex;
+    gap: 10px;
+    font-size: large;
+}
