@@ -19,15 +19,16 @@ const todoEntry = document.querySelector(".todoEntry");
 const enterEntry = document.querySelector(".enterEntry");
 const cancelEntry = document.querySelector(".cancelEntry");
 const todoEntryForm = document.querySelector(".inputTask>form");
+const priority = document.querySelectorAll('input[name = "priority"]');
 
 // defining the project
 const projects = {};
 
 class Task{
     //defining the task object
-    constructor(name, status, dueDate) {
+    constructor(name, priority, dueDate) {
         this.name = name;
-        this.status = status;
+        this.priority = priority;
         this.dueDate = dueDate;
     }
 }
@@ -126,6 +127,7 @@ addProjectButton.addEventListener("click", (event)=> {
 
 cancelProjectButton.addEventListener("click", ()=> {
     // this is for the cancel button in the hidded div in the sidebar
+    form.reset();
     inputProjectSection.style.display = "none";
 })
 
@@ -140,9 +142,16 @@ enterEntry.addEventListener("click", (event)=> {
     let i = mainTitle.textContent
 
     let name = todoEntry.value;
-    let status = false;
     let dueDate = "tomorrow";
-    let task = new Task(name,status,dueDate);
+    let priorityValue;
+
+    priority.forEach(btn => {
+        if (btn.checked) {
+            priorityValue = btn.value
+        }
+    });
+ 
+    let task = new Task(name,priorityValue,dueDate);
 
     projects[i].push(task); 
     addTaskToDOM(task);
@@ -153,6 +162,7 @@ enterEntry.addEventListener("click", (event)=> {
 
 cancelEntry.addEventListener("click", ()=> {
     // this is for the cancel button in the hidden div in the main menu
+    todoEntryForm.reset();
     inputTaskSection.style.display = "none";
 })
 
@@ -183,6 +193,14 @@ function addTaskToDOM(task) {
     todoSection.style.display = "flex";
     todoSection.style.flexDirection = "column";
     todoSection.style.gap = "20px";
+
+    if (task.priority === "low") {
+        divContainer.style.borderLeft = "5px solid rgb(255, 179, 0)";
+    } else if (task.priority === "medium") {
+        divContainer.style.borderLeft = "5px solid green";
+    } else {
+        divContainer.style.borderLeft = "5px solid red";
+    }
 
 
     removeImg.addEventListener("click", ()=> {
