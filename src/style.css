@@ -167,12 +167,10 @@ fieldset {
     border-radius: 5px;
     padding: 10px 0px;
     box-shadow: 5px 5px 5px rgb(222, 219, 219);
-    border-left: 5px solid rgb(255, 179, 0);
 }
 
 .todoList input {
     height: 25px;
-    border-color: greenyellow;
 }
 
 .todoList img {
