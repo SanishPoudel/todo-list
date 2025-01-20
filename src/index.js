@@ -133,7 +133,7 @@ cancelProjectButton.addEventListener("click", ()=> {
 
 taskButton.addEventListener("click", ()=> {
     // this is for the add task button in the main menu
-    inputTaskSection.style.display = "unset";
+    inputTaskSection.showModal();
     todoEntry.focus();
 })
 
@@ -156,14 +156,14 @@ enterEntry.addEventListener("click", (event)=> {
     projects[i].push(task); 
     addTaskToDOM(task);
     todoEntryForm.reset();
-    inputTaskSection.style.display = "none";
+    inputTaskSection.close();
     event.preventDefault();
 })
 
 cancelEntry.addEventListener("click", ()=> {
     // this is for the cancel button in the hidden div in the main menu
     todoEntryForm.reset();
-    inputTaskSection.style.display = "none";
+    inputTaskSection.close();
 })
 
 
