@@ -102,8 +102,15 @@ body {
     height: 35px;
 }
 
-.inputProject, .inputTask {
+.inputProject {
     display: none;
+}
+
+.inputTask {
+    border-radius: 5px;
+    border: 1px solid black;
+    box-shadow: 1px 1px 10px;
+    background-color: aliceblue;
 }
 
 form {
@@ -179,7 +186,8 @@ fieldset {
 
 .radioButtons {
     border: solid 1px black;
-    padding: 10px 0px;
+    padding: 10px;
+    border-radius: 8px;
 }
 
 .radioButtons legend {
