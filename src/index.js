@@ -20,6 +20,7 @@ const enterEntry = document.querySelector(".enterEntry");
 const cancelEntry = document.querySelector(".cancelEntry");
 const todoEntryForm = document.querySelector(".inputTask>form");
 const priority = document.querySelectorAll('input[name = "priority"]');
+const date = document.querySelector(".date");
 
 // defining the project
 const projects = {};
@@ -139,24 +140,28 @@ taskButton.addEventListener("click", ()=> {
 
 enterEntry.addEventListener("click", (event)=> {
     // this is for the add button in the hidded div in the main menu
-    let i = mainTitle.textContent
+    if (todoEntry.value !== "" && date.value) {
+        let i = mainTitle.textContent
 
-    let name = todoEntry.value;
-    let dueDate = "tomorrow";
-    let priorityValue;
+        let name = todoEntry.value;
+        let dueDate = date.value;
+        let priorityValue;
 
-    priority.forEach(btn => {
-        if (btn.checked) {
-            priorityValue = btn.value
-        }
-    });
- 
-    let task = new Task(name,priorityValue,dueDate);
+        priority.forEach(btn => {
+            if (btn.checked) {
+                priorityValue = btn.value
+            }
+        });
+    
+        let task = new Task(name,priorityValue,dueDate);
 
-    projects[i].push(task); 
-    addTaskToDOM(task);
-    todoEntryForm.reset();
-    inputTaskSection.close();
+        projects[i].push(task); 
+        addTaskToDOM(task);
+        todoEntryForm.reset();
+        inputTaskSection.close();
+    } else {
+        alert("Please fill the form correctly.");
+    }
     event.preventDefault();
 })
 
