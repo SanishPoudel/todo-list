@@ -39,10 +39,16 @@
             <div class="title">Inbox</div>
             <div class="todoSection"></div>
             <button class="task options"><img class="btn icon" src="./images/plus.svg" alt="add icon">Add Task</button>
-            <div class="inputTask">
+            <dialog class="inputTask">
                 <form>
                     <fieldset>
+                        <legend>Task Name</legend>
                         <input class="todoEntry" type="text">
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Due date:</legend>
+                        <input class="date" type="date">
                     </fieldset>
                     
                     <fieldset class="radioButtons">
@@ -72,7 +78,7 @@
                     </fieldset>
 
                 </form>
-            </div>
+            </dialog>
         </div>
         
     </div>
