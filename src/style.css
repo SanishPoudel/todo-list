@@ -166,7 +166,7 @@ fieldset {
 
 .todoList {
     display: grid;
-    grid-template-columns: 0.5fr 6fr 0.5fr;
+    grid-template-columns: 0.5fr 6fr 1.5fr 0.5fr;
     gap: 5px;
     text-align: left;
     font-size: large;
