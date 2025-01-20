@@ -178,12 +178,6 @@ cancelEntry.addEventListener("click", ()=> {
 function addTaskToDOM(task) {
 
     let divContainer = document.createElement("div");
-    console.log(task.dueDate);
-
-
-    // need to add date properly
-    // can't seem to add date as it's 
-    // need to find a way to convert this date to string and add it the container
 
     let checkbox = document.createElement("input");
     checkbox.setAttribute("type", "checkbox");
@@ -226,3 +220,9 @@ function addTaskToDOM(task) {
         projects[mainTitle.textContent].splice(index, 1);
     })
 }
+
+// now need to separate the todos according to date. 
+// all of them should be added in inbox.
+// all due today should be in today section
+// all due this week should be in this week section
+// also need to change background when clicked. solidify the hover effect when clicked.
