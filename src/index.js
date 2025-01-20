@@ -119,10 +119,13 @@ projectButton.addEventListener("click", ()=> {
 
 addProjectButton.addEventListener("click", (event)=> {
     // this is for the add button in the hidded div in the sidebar
-    projects[projectTitle.value] = [];
-    inputProjectSection.style.display = "none";
-    addProjectToSideBar();
-    form.reset();
+    if (projectTitle.value !== "") {        projects[projectTitle.value] = [];
+        inputProjectSection.style.display = "none";
+        addProjectToSideBar();
+        form.reset();
+    } else {
+        alert("Please fill out the form correctly.")
+    }
     event.preventDefault();
 })
 
