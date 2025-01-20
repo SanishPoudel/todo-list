@@ -153,7 +153,7 @@ enterEntry.addEventListener("click", (event)=> {
             }
         });
     
-        let task = new Task(name,priorityValue,dueDate);
+        let task = new Task(name, priorityValue, dueDate);
 
         projects[i].push(task); 
         addTaskToDOM(task);
@@ -173,15 +173,23 @@ cancelEntry.addEventListener("click", ()=> {
 
 
 function addTaskToDOM(task) {
-    // need to make sure that all the elements are formatted properly
-    // needs to add all details not just names
+
     let divContainer = document.createElement("div");
+    console.log(task.dueDate);
+
+
+    // need to add date properly
+    // can't seem to add date as it's 
+    // need to find a way to convert this date to string and add it the container
 
     let checkbox = document.createElement("input");
     checkbox.setAttribute("type", "checkbox");
 
     let textDiv = document.createElement("div");
     textDiv.textContent = task.name;
+
+    let dateDiv = document.createElement("div");
+    dateDiv.textContent = task.dueDate;
 
     let removeImg = document.createElement("img");
     removeImg.className = "keyIcon";
@@ -190,6 +198,7 @@ function addTaskToDOM(task) {
 
     divContainer.appendChild(checkbox);
     divContainer.appendChild(textDiv);
+    divContainer.appendChild(dateDiv);
     divContainer.appendChild(removeImg);
 
     divContainer.className = "todoList";
