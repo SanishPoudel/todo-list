@@ -32,7 +32,7 @@ body {
     overflow-y: auto;
 }
 
-.nav {
+.options, .title {
     all: unset;
     display: flex;
     gap: 10px;
