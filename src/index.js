@@ -21,6 +21,7 @@ const cancelEntry = document.querySelector(".cancelEntry");
 const todoEntryForm = document.querySelector(".inputTask>form");
 const priority = document.querySelectorAll('input[name = "priority"]');
 const date = document.querySelector(".date");
+// const navItems = document.querySelectorAll(".nav");
 
 // defining the project
 const projects = {};
@@ -144,7 +145,7 @@ taskButton.addEventListener("click", ()=> {
 enterEntry.addEventListener("click", (event)=> {
     // this is for the add button in the hidded div in the main menu
     if (todoEntry.value !== "" && date.value) {
-        let i = mainTitle.textContent
+        let projectName = mainTitle.textContent
 
         let name = todoEntry.value;
         let dueDate = date.value;
@@ -156,10 +157,10 @@ enterEntry.addEventListener("click", (event)=> {
             }
         });
     
-        let task = new Task(name, priorityValue, dueDate);
+        let taskName = new Task(name, priorityValue, dueDate);
 
-        projects[i].push(task); 
-        addTaskToDOM(task);
+        addProject(projectName,taskName); 
+        addTaskToDOM(taskName);
         todoEntryForm.reset();
         inputTaskSection.close();
     } else {
@@ -226,3 +227,17 @@ function addTaskToDOM(task) {
 // all due today should be in today section
 // all due this week should be in this week section
 // also need to change background when clicked. solidify the hover effect when clicked.
+
+// navItems.forEach(item => {
+//     item.addEventListener("click", () => {
+//         removeBackground();
+//         item.style.backgroundColor = "#CCCCCC";
+        
+//     });
+// });
+
+// function removeBackground() {
+//     for (let i = 0; i < navItems.length; i++){
+//         navItems[i].style["background-color"] = "#dddddd";
+//     }
+// }
