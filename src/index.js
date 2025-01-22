@@ -21,7 +21,6 @@ const cancelEntry = document.querySelector(".cancelEntry");
 const todoEntryForm = document.querySelector(".inputTask>form");
 const priority = document.querySelectorAll('input[name = "priority"]');
 const date = document.querySelector(".date");
-// const navItems = document.querySelectorAll(".nav");
 
 // defining the project
 const projects = {};
@@ -56,7 +55,10 @@ function addProjectToSideBar() {
     clearDiv(container);
 
     for (let sidebarKeys of (Object.keys(projects))) {
-        // parent div
+
+        if (sidebarKeys === "Inbox") {
+            continue;
+        }
 
         // for the button
         const btn = document.createElement("button");
@@ -226,18 +228,5 @@ function addTaskToDOM(task) {
 // all of them should be added in inbox.
 // all due today should be in today section
 // all due this week should be in this week section
-// also need to change background when clicked. solidify the hover effect when clicked.
-
-// navItems.forEach(item => {
-//     item.addEventListener("click", () => {
-//         removeBackground();
-//         item.style.backgroundColor = "#CCCCCC";
-        
-//     });
-// });
-
-// function removeBackground() {
-//     for (let i = 0; i < navItems.length; i++){
-//         navItems[i].style["background-color"] = "#dddddd";
-//     }
-// }
+// don't display inbox in projects section
+// when clicked on inbox, it should show all the tasks from all the projects including its own.
