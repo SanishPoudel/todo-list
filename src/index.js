@@ -60,57 +60,7 @@ function addProjectToSideBar() {
             continue;
         }
 
-        // for the button
-        const btn = document.createElement("button");
-        btn.textContent = sidebarKeys;
-        btn.className = "nav options";
-        btn.style.fontSize = "large"; 
-        btn.style.paddingLeft = "10px";
-
-        // for the image
-        const img1 = document.createElement("img");
-        img1.className = "keyIcon";
-        img1.src = list;
-        img1.alt = "list icon"
-
-        // for the delete icon
-        const img2 = document.createElement("img");
-        img2.className = "keyIcon";
-        img2.src = close;
-        img2.alt = "close icon";
-
-        btn.prepend(img1);
-        btn.appendChild(img2);
-
-        btn.style.display = "grid";
-        btn.style["grid-template-columns"] = "1fr 6fr 2fr";
-
-        container.appendChild(btn);
-
-        btn.addEventListener("click", ()=> {
-        // project titles. when clicked should display tasks in the main menu.
-            let value = projects[btn.textContent];
-
-            if (value) {
-                clearDiv(todoSection);
-                mainTitle.textContent = btn.textContent;
-
-                for (let i = 0; i < value.length; i++) {
-                    addTaskToDOM(value[i]);
-                }               
-            }
-        });
-
-        img2.addEventListener("click", ()=> {
-            // to remove the project from projects
-                container.removeChild(btn);
-                delete projects[btn.textContent];
-
-                if (img2.parentNode.textContent === mainTitle.textContent) { 
-                mainTitle.textContent = "Inbox";
-                clearDiv(todoSection);
-                }
-        })
+        displayTaskInMenu(sidebarKeys);
     }
 }
 
@@ -230,3 +180,58 @@ function addTaskToDOM(task) {
 // all due this week should be in this week section
 // don't display inbox in projects section
 // when clicked on inbox, it should show all the tasks from all the projects including its own.
+
+
+function displayTaskInMenu(sidebarKey) {
+    // for the button
+    const btn = document.createElement("button");
+    btn.textContent = sidebarKey;
+    btn.className = "nav options";
+    btn.style.fontSize = "large"; 
+    btn.style.paddingLeft = "10px";
+
+    // for the image
+    const img1 = document.createElement("img");
+    img1.className = "keyIcon";
+    img1.src = list;
+    img1.alt = "list icon"
+
+    // for the delete icon
+    const img2 = document.createElement("img");
+    img2.className = "keyIcon";
+    img2.src = close;
+    img2.alt = "close icon";
+
+    btn.prepend(img1);
+    btn.appendChild(img2);
+
+    btn.style.display = "grid";
+    btn.style["grid-template-columns"] = "1fr 6fr 2fr";
+
+    container.appendChild(btn);
+
+    btn.addEventListener("click", ()=> {
+    // project titles. when clicked should display tasks in the main menu.
+        let value = projects[btn.textContent];
+
+        if (value) {
+            clearDiv(todoSection);
+            mainTitle.textContent = btn.textContent;
+
+            for (let i = 0; i < value.length; i++) {
+                addTaskToDOM(value[i]);
+            }               
+        }
+    });
+
+    img2.addEventListener("click", ()=> {
+        // to remove the project from projects
+            container.removeChild(btn);
+            delete projects[btn.textContent];
+
+            if (img2.parentNode.textContent === mainTitle.textContent) { 
+            mainTitle.textContent = "Inbox";
+            clearDiv(todoSection);
+            }
+    });
+}
