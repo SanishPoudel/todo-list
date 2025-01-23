@@ -22,6 +22,7 @@ const todoEntryForm = document.querySelector(".inputTask>form");
 const priority = document.querySelectorAll('input[name = "priority"]');
 const date = document.querySelector(".date");
 const inbox = document.querySelector(".inbox");
+const today = document.querySelector(".today");
 
 // defining the project
 const projects = {};
@@ -265,3 +266,18 @@ function displayInbox() {
         }
     }   
 }
+
+today.addEventListener("click", ()=> {
+    let todayDate = new Date().toISOString().slice(0,10);
+    mainTitle.textContent = "Today";
+    clearDiv(todoSection);
+
+    let valueList = Object.values(projects);
+    for (let individualList of valueList) {
+        individualList.forEach(item => {
+            if (item.dueDate === todayDate) {
+                addTaskToDOM(item);
+            }
+        })
+    }
+})
