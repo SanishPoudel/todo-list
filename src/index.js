@@ -93,6 +93,7 @@ function addProjectToSideBar() {
 
         btn.addEventListener("click", ()=> {
         // project titles. when clicked should display tasks in the main menu.
+            taskButton.style.visibility = "visible";
             let value = projects[btn.textContent];
 
             if (value) {
@@ -252,6 +253,7 @@ inbox.addEventListener("click", displayInbox);
 function displayInbox() {
     mainTitle.textContent = "Inbox";
     clearDiv(todoSection);
+    taskButton.style.visibility = "visible";
 
     let valueList = Object.values(projects);
     for (let individualList of valueList) {
@@ -271,6 +273,7 @@ today.addEventListener("click", ()=> {
     let todayDate = new Date().toISOString().slice(0,10);
     mainTitle.textContent = "Today";
     clearDiv(todoSection);
+    taskButton.style.visibility = "hidden";
 
     let valueList = Object.values(projects);
     for (let individualList of valueList) {
@@ -297,6 +300,8 @@ function getWeek() {
 week.addEventListener("click", ()=> {
     mainTitle.textContent = "This Week";
     clearDiv(todoSection);
+    taskButton.style.visibility = "hidden";
+
     let valueList = Object.values(projects);
     for (let individualList of valueList) {
         individualList.forEach(item => {
