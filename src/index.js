@@ -23,6 +23,7 @@ const priority = document.querySelectorAll('input[name = "priority"]');
 const date = document.querySelector(".date");
 const inbox = document.querySelector(".inbox");
 const today = document.querySelector(".today");
+const week = document.querySelector(".week");
 
 // defining the project
 const projects = {};
@@ -243,7 +244,6 @@ function addTaskToDOM(task) {
 }
 
 // now need to separate the todos according to date. 
-// all due today should be in today section
 // all due this week should be in this week section
 
 
@@ -276,6 +276,33 @@ today.addEventListener("click", ()=> {
     for (let individualList of valueList) {
         individualList.forEach(item => {
             if (item.dueDate === todayDate) {
+                addTaskToDOM(item);
+            }
+        })
+    }
+})
+
+function getWeek() {
+    let today = new Date();
+    let week = [];
+
+    for (let i = 0; i < 7; i++) {
+        let day = today.getDate() - today.getDay() + i
+        week.push(day);
+    }
+
+    return week;
+}
+
+week.addEventListener("click", ()=> {
+    mainTitle.textContent = "This Week";
+    clearDiv(todoSection);
+    let valueList = Object.values(projects);
+    for (let individualList of valueList) {
+        individualList.forEach(item => {
+            let thisWeek = getWeek();
+            let itemDate = new Date(item.dueDate).getDate();
+            if (thisWeek.includes(itemDate)) {
                 addTaskToDOM(item);
             }
         })
