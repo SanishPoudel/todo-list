@@ -28,10 +28,11 @@ const projects = {};
 
 class Task{
     //defining the task object
-    constructor(name, priority, dueDate) {
+    constructor(name, priority, dueDate, checkStatus) {
         this.name = name;
         this.priority = priority;
         this.dueDate = dueDate;
+        this.checkStatus = checkStatus;
     }
 }
 
@@ -153,6 +154,7 @@ enterEntry.addEventListener("click", (event)=> {
         let name = todoEntry.value;
         let dueDate = date.value;
         let priorityValue;
+        let checkValue = false;
 
         priority.forEach(btn => {
             if (btn.checked) {
@@ -160,7 +162,7 @@ enterEntry.addEventListener("click", (event)=> {
             }
         });
     
-        let taskName = new Task(name, priorityValue, dueDate);
+        let taskName = new Task(name, priorityValue, dueDate, checkValue);
 
         addProject(projectName,taskName); 
         addTaskToDOM(taskName);
@@ -217,6 +219,20 @@ function addTaskToDOM(task) {
         divContainer.style.borderLeft = "5px solid red";
     }
 
+    if (task.checkStatus === true) {
+        checkbox.checked = true;
+    } else {
+        checkbox.checked = false;
+    }
+
+    checkbox.addEventListener("click", ()=> {
+        if (task.checkStatus === false) {
+        task.checkStatus = true;
+        } else {
+            task.checkStatus = false;
+        }
+    })
+
 
     removeImg.addEventListener("click", ()=> {
         todoSection.removeChild(divContainer);
@@ -226,11 +242,9 @@ function addTaskToDOM(task) {
 }
 
 // now need to separate the todos according to date. 
-// all of them should be added in inbox.
 // all due today should be in today section
 // all due this week should be in this week section
-// don't display inbox in projects section
-// when clicked on inbox, it should show all the tasks from all the projects including its own.
+
 
 inbox.addEventListener("click", displayInbox); 
     
