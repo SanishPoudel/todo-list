@@ -31,6 +31,7 @@ let savedProjects = localStorage.getItem("projects");
 if (savedProjects) {
     projects = JSON.parse(savedProjects);
     addProjectToSideBar();
+    displayInbox();
 } else {
     projects = {};
 }
@@ -243,11 +244,8 @@ function addTaskToDOM(task) {
     }
 
     checkbox.addEventListener("click", ()=> {
-        if (task.checkStatus === false) {
-        task.checkStatus = true;
-        } else {
-            task.checkStatus = false;
-        }
+        task.checkStatus = !task.checkStatus;
+        saveProjectsToLocalStorage();
     })
 
 
@@ -258,10 +256,6 @@ function addTaskToDOM(task) {
         saveProjectsToLocalStorage();
     })
 }
-
-// now need to separate the todos according to date. 
-// all due this week should be in this week section
-
 
 inbox.addEventListener("click", displayInbox); 
     
