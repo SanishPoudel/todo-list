@@ -26,7 +26,18 @@ const today = document.querySelector(".today");
 const week = document.querySelector(".week");
 
 // defining the project
-const projects = {};
+let projects;
+let savedProjects = localStorage.getItem("projects");
+if (savedProjects) {
+    projects = JSON.parse(savedProjects);
+    addProjectToSideBar();
+} else {
+    projects = {};
+}
+
+function saveProjectsToLocalStorage() {
+    localStorage.setItem("projects", JSON.stringify(projects));
+}
 
 class Task{
     //defining the task object
@@ -45,6 +56,7 @@ function addProject(projectName, taskName) {
     } else {
         projects[projectName] = [taskName];
     } 
+    saveProjectsToLocalStorage();
 }
 
 function clearDiv(div) {
@@ -110,6 +122,7 @@ function addProjectToSideBar() {
             // to remove the project from projects
                 container.removeChild(btn);
                 delete projects[btn.textContent];
+                saveProjectsToLocalStorage();
 
                 if (img2.parentNode.textContent === mainTitle.textContent) { 
                 displayInbox();
@@ -134,6 +147,7 @@ addProjectButton.addEventListener("click", (event)=> {
     } else {
         alert("Please fill out the form correctly.")
     }
+    saveProjectsToLocalStorage();
     event.preventDefault();
 })
 
@@ -241,6 +255,7 @@ function addTaskToDOM(task) {
         todoSection.removeChild(divContainer);
         let index = projects[mainTitle.textContent].findIndex((x) => x === task.name);
         projects[mainTitle.textContent].splice(index, 1);
+        saveProjectsToLocalStorage();
     })
 }
 
