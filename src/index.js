@@ -42,11 +42,12 @@ function saveProjectsToLocalStorage() {
 
 class Task{
     //defining the task object
-    constructor(name, priority, dueDate, checkStatus) {
+    constructor(name, priority, dueDate, checkStatus, parentProject) {
         this.name = name;
         this.priority = priority;
         this.dueDate = dueDate;
         this.checkStatus = checkStatus;
+        this.parentProject = parentProject;
     }
 }
 
@@ -173,6 +174,7 @@ enterEntry.addEventListener("click", (event)=> {
         let dueDate = date.value;
         let priorityValue;
         let checkValue = false;
+        let parentProject = projectName;
 
         priority.forEach(btn => {
             if (btn.checked) {
@@ -180,7 +182,7 @@ enterEntry.addEventListener("click", (event)=> {
             }
         });
     
-        let taskName = new Task(name, priorityValue, dueDate, checkValue);
+        let taskName = new Task(name, priorityValue, dueDate, checkValue, parentProject);
 
         addProject(projectName,taskName); 
         addTaskToDOM(taskName);
@@ -251,8 +253,8 @@ function addTaskToDOM(task) {
 
     removeImg.addEventListener("click", ()=> {
         todoSection.removeChild(divContainer);
-        let index = projects[mainTitle.textContent].findIndex((x) => x === task.name);
-        projects[mainTitle.textContent].splice(index, 1);
+        let index = projects[task.parentProject].findIndex((x) => x === task.name);
+        projects[task.parentProject].splice(index, 1);
         saveProjectsToLocalStorage();
     })
 }
