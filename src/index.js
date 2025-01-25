@@ -127,12 +127,12 @@ function addProjectToSideBar() {
                 delete projects[btn.textContent];
                 saveProjectsToLocalStorage();
 
-                if ((img2.parentNode.textContent === mainTitle.textContent) && (mainTitle.textContent !== "This Week") && (mainTitle.textContent !== "Today")) { 
-                    displayInbox();
-                } else if (mainTitle.textContent === "This Week") {
+                if (mainTitle.textContent === "This Week") {
                     displayWeek();
                 } else if (mainTitle.textContent === "Today") {
                     displayToday();
+                } else {
+                    displayInbox();
                 }
         })
     }
@@ -307,9 +307,14 @@ function getWeek() {
     let today = new Date();
     let week = [];
 
+    let startOfWeek = new Date(today);
+    startOfWeek.setDate(today.getDate() - today.getDay()); // Set to the start of the week (Sunday)
+
+    // Generate the 7-day week
     for (let i = 0; i < 7; i++) {
-        let day = today.getDate() - today.getDay() + i
-        week.push(day);
+        let day = new Date(startOfWeek);
+        day.setDate(startOfWeek.getDate() + i); // Add the current day of the week
+        week.push(day.toISOString().slice(0, 10)); // Store as a string in YYYY-MM-DD format
     }
 
     return week;
@@ -323,10 +328,13 @@ function displayWeek() {
     taskButton.style.visibility = "hidden";
 
     let valueList = Object.values(projects);
+    let thisWeek = getWeek();
+
     for (let individualList of valueList) {
         individualList.forEach(item => {
-            let thisWeek = getWeek();
-            let itemDate = new Date(item.dueDate).getDate();
+
+            let itemDate = new Date(item.dueDate).toISOString().slice(0,10);
+
             if (thisWeek.includes(itemDate)) {
                 addTaskToDOM(item);
             }
