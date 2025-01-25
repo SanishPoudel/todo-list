@@ -105,7 +105,7 @@ function addProjectToSideBar() {
 
         container.appendChild(btn);
 
-        btn.addEventListener("click", ()=> {
+        btn.addEventListener("click", (event)=> {
         // project titles. when clicked should display tasks in the main menu.
             taskButton.style.visibility = "visible";
             let value = projects[btn.textContent];
@@ -120,14 +120,19 @@ function addProjectToSideBar() {
             }
         });
 
-        img2.addEventListener("click", ()=> {
+        img2.addEventListener("click", (event)=> {
             // to remove the project from projects
+                event.stopPropagation();
                 container.removeChild(btn);
                 delete projects[btn.textContent];
                 saveProjectsToLocalStorage();
 
-                if (img2.parentNode.textContent === mainTitle.textContent) { 
-                displayInbox();
+                if ((img2.parentNode.textContent === mainTitle.textContent) && (mainTitle.textContent !== "This Week") && (mainTitle.textContent !== "Today")) { 
+                    displayInbox();
+                } else if (mainTitle.textContent === "This Week") {
+                    displayWeek();
+                } else if (mainTitle.textContent === "Today") {
+                    displayToday();
                 }
         })
     }
@@ -280,7 +285,9 @@ function displayInbox() {
     }   
 }
 
-today.addEventListener("click", ()=> {
+today.addEventListener("click", displayToday);
+    
+function displayToday() {
     let todayDate = new Date().toISOString().slice(0,10);
     mainTitle.textContent = "Today";
     clearDiv(todoSection);
@@ -292,9 +299,9 @@ today.addEventListener("click", ()=> {
             if (item.dueDate === todayDate) {
                 addTaskToDOM(item);
             }
-        })
+        });
     }
-})
+}
 
 function getWeek() {
     let today = new Date();
@@ -308,7 +315,9 @@ function getWeek() {
     return week;
 }
 
-week.addEventListener("click", ()=> {
+week.addEventListener("click",displayWeek);
+
+function displayWeek() {
     mainTitle.textContent = "This Week";
     clearDiv(todoSection);
     taskButton.style.visibility = "hidden";
@@ -323,4 +332,4 @@ week.addEventListener("click", ()=> {
             }
         })
     }
-})
+}
