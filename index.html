@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+<script defer src="main.js"></script></head>
+<body>
+    <div id="content">
+
+    <div class="header">
+        <img class="icon" src="fa79760d9ced27677e77.svg" alt="todo list logo">
+        <h1>Todo List</h1>
+    </div>
+
+    <div class="sidebar">
+        <button class="nav options inbox"><img class="icon" src="c02a2702923a0d852717.svg" alt="inbox icon"> Inbox</button>
+        <button class="nav options today"><img class="icon" src="233385e32206cd372d69.svg" alt="today icon"> Today</button>
+        <button class="nav options week"><img class="icon" src="518ff47ec29e1552eabd.svg" alt="this week icon"> This Week</button>
+        <div class="title">Projects</div>
+        <div class="container"></div>
+        <button class="project options"><img class="icon" src="3cffe9a515498593b872.svg" alt="plus icon"> Add Project</button>
+        <div class="inputProject">
+            <form>
+                <fieldset>
+                    <input class="projectTitle" type="text">
+                </fieldset>
+                
+                <fieldset>
+                    <button type="submit" class="add">Add</button>
+                    <button type="button" class="cancel">Cancel</button>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+
+    <div class="main">
+        <div class="menu">
+            <div class="title">Inbox</div>
+            <div class="todoSection"></div>
+            <button class="task options"><img class="btn icon" src="3cffe9a515498593b872.svg" alt="add icon">Add Task</button>
+            <dialog class="inputTask">
+                <form>
+                    <fieldset>
+                        <legend>Task Name</legend>
+                        <input class="todoEntry" type="text">
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Due date:</legend>
+                        <input class="date" type="date">
+                    </fieldset>
+                    
+                    <fieldset class="radioButtons">
+                        <legend>Select Priority</legend>
+
+                        <div>
+                            <label for="low">Low</label>
+                            <input type="radio" id="low" name="priority" value="low" checked>
+                        </div>
+
+                        <div>
+                            <label for="medium">Medium</label>
+                            <input type="radio" id="medium" name="priority" value="medium">
+                        </div>
+
+                        <div>
+                            <label for="high">High</label>
+                            <input type="radio" id="high" name="priority" value="high">
+                        </div>
+
+                    </fieldset>
+
+
+                    <fieldset>
+                        <button type="submit" class="enterEntry">Add</button>
+                        <button type="button" class="cancelEntry">Cancel</button>
+                    </fieldset>
+
+                </form>
+            </dialog>
+        </div>
+        
+    </div>
+
+    <div class="footer">Made by Sanish Poudel.<a href="https://github.com/SanishPoudel"><img class="icon" src="93a94d440a2ac44ad1e5.svg" alt="github logo"></a></div>
+
+    </div>
+
+</body>
+</html>
