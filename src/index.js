@@ -288,7 +288,7 @@ function displayInbox() {
 today.addEventListener("click", displayToday);
     
 function displayToday() {
-    let todayDate = new Date().toISOString().slice(0,10);
+    let todayDate = new Date().toLocaleDateString("en-CA");
     mainTitle.textContent = "Today";
     clearDiv(todoSection);
     taskButton.style.visibility = "hidden";
@@ -314,7 +314,7 @@ function getWeek() {
     for (let i = 0; i < 7; i++) {
         let day = new Date(startOfWeek);
         day.setDate(startOfWeek.getDate() + i); // Add the current day of the week
-        week.push(day.toISOString().slice(0, 10)); // Store as a string in YYYY-MM-DD format
+        week.push(day.toLocaleDateString("en-CA")); 
     }
 
     return week;
@@ -338,6 +338,6 @@ function displayWeek() {
             if (thisWeek.includes(itemDate)) {
                 addTaskToDOM(item);
             }
-        })
+        });
     }
 }
